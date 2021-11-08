@@ -37,16 +37,20 @@ public enum Rank {
     }
 
     public static Rank valueOf(int countOfMatch, boolean matchBonus) {
-        if (countOfMatch == SECOND.countOfMatch && matchBonus) {
-            return SECOND;
-        }
-        if (countOfMatch == SECOND.countOfMatch && !matchBonus) {
-            return THIRD;
+        if (countOfMatch == SECOND.countOfMatch) {
+            return isSecondOrThird(matchBonus);
         }
         return Arrays.stream(values())
                 .filter(rank -> countOfMatch == rank.countOfMatch)
                 .findFirst()
                 .orElse(MISS);
+    }
+
+    private static Rank isSecondOrThird(boolean matchBonus) {
+        if (matchBonus) {
+            return SECOND;
+        }
+        return THIRD;
     }
 
     public static Rank valueOf(int countOfMatch) {
