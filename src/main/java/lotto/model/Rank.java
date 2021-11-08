@@ -32,7 +32,7 @@ public enum Rank {
 
     public static List<Rank> createWinningRanks() {
         return Stream.of(FIRST, SECOND, THIRD, FOURTH, FIFTH)
-                .sorted(Comparator.comparing(Rank::getCountOfMatch))
+                .sorted(Comparator.comparing(Rank::getWinningMoney))
                 .collect(Collectors.toList());
     }
 
