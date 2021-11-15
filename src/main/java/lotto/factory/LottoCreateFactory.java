@@ -15,8 +15,8 @@ public class LottoCreateFactory {
 
     public static Lottos createTotalLottos(LottosCount lottosCount, List<Lotto> manualLotto) {
         List<Lotto> totalLottoGroup = new ArrayList<>();
-        Collections.addAll(totalLottoGroup, manualLotto.toArray(new Lotto[0]));
-        Collections.addAll(totalLottoGroup, createAutoLottos(lottosCount.auto()).toArray(new Lotto[0]));
+        totalLottoGroup.addAll(manualLotto);
+        totalLottoGroup.addAll(createAutoLottos(lottosCount.auto()));
         return new Lottos(totalLottoGroup);
     }
 
